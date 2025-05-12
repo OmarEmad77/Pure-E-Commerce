@@ -1,7 +1,7 @@
 // const link = "mens-shirts";
 // import { displayProducts } from "./category.js";
 
-import { fetchData } from "script.js";
+import { fetchData } from "./script.js";
 
 const categoryGrid = document.querySelector(".category-grid");
 let sectionTitle = document.querySelector(".section-title");
