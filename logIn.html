@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 1rem;
+      }
+
+      .login-container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login-container h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #555;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #4caf50;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .login-btn:hover {
+        background-color: #43a047;
+      }
+
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 1.5rem;
+        }
+
+        .login-container h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+    <script>
+      //   let login = localStorage.setItem("logIn", false);
+      //   setTimeout(() => {
+      //     localStorage.removeItem("logIn");
+      //   }, 1000);
+      // Get the Email From Localstorage
+      const personInfo = JSON.parse(localStorage.getItem("PersonEmails"));
+      console.log(personInfo);
+      let email;
+      let password;
+      const emails = personInfo.forEach((info) => {
+        email = info.userName + info.age + info.gender + "@gmail.com";
+      });
+      const passwords = personInfo.forEach((info) => {
+        password = info.password;
+      });
+      console.log(email);
+      console.log(password);
+      const emailEl = document.querySelector("#email");
+      const passwordEl = document.querySelector("#password");
+      const loginBtn = document.querySelector(".login-btn");
+      const signupContainer = document.querySelector(".login-container");
+      const massage = document.createElement("div");
+      massage.style.cssText = `
+color: #920e0e;
+  text-align: center;
+   font-size: 1rem;
+   margin : 20px ;
+`;
+      massage.textContent = "Please Enter The Correct Email Or Password ";
+      console.log(emailEl);
+
+      loginBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (
+          !emailEl.value ||
+          !passwordEl.value ||
+          (emailEl.value !== email && passwordEl.value !== password)
+        ) {
+          signupContainer.firstElementChild.after(massage);
+        } else {
+          localStorage.setItem("logIn", true);
+          location.href = "index.html";
+        }
+      });
+    </script>
+  </body>
+</html>
