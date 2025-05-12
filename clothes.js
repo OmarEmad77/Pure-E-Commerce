@@ -1,5 +1,5 @@
 // const link = "mens-shirts";
-// import { displayProducts } from "/category.js";
+// import { displayProducts } from "./category.js";
 
 import { fetchData } from "script.js";
 
