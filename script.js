@@ -7,7 +7,7 @@ console.log(`hello from Zefta Lab`);
 const loginDone = localStorage.getItem("logIn");
 console.log(loginDone);
 
-if (loginDone === "false") {
+if (loginDone === "false" || !loginDone) {
   location.href = "signUp.html";
 }
 
