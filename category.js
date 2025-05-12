@@ -1,4 +1,4 @@
-import { fetchData, categoriesElement, showData } from "script.js";
+import { fetchData, categoriesElement, showData } from "./script.js";
 // categoriesElement.remove();
 
 console.log(categoriesElement);
